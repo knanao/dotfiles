@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/s08721/go/src/github.com/ca-irvine/server'
+let g:netrw_dirhist_2='/Users/s08721/go/src/github.com/ca-irvine/server/cmd'
+let g:netrw_dirhist_3='/Users/s08721/go/src/github.com/ca-irvine/server/cmd/gateway'
