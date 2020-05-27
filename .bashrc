@@ -8,6 +8,8 @@ export FIREBASE_CREDENTIALS=~/path_to_file/firebase_adminsdk_service_account_tes
 
 export PATH=$PATH:/Users/s08721/.nodebrew/current/bin
 
+export PATH=/usr/local/Cellar/vim/8.2.0750/bin:$PATH
+
 complete -C /usr/local/bin/terraform terraform
 
 alias ls='ls -G'

@@ -10,6 +10,8 @@ set incsearch
 set laststatus=2
 " カーソル行表示
 set cursorline
+" カーソル列表示
+set cursorcolumn
 " ヤンクしたデータをクリップボードで使用
 set clipboard+=unnamed
 " オートインデント
@@ -18,6 +20,19 @@ set smartindent
 set wildmenu
 " オートコンプリート
 set completeopt=menuone,noinsert
+" 不可視文字可視化
+set list
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+" コントロールコード
+set backspace=indent,eol,start
+" modifiableオン
+set ma
+" swap fileを作成しない
+set noswapfile
+" vimgrep除外ファイル
+set wildignore+=node_modules/**,bin/**
+" 更新時間
+set updatetime=100
 
 " Escを2回押すとハイライトを消す
 nnoremap <Esc><Esc> :nohlsearch<CR>
@@ -44,11 +59,11 @@ function! ExecExCommand(cmd)
   silent exec a:cmd
   return ''
 endfunction
+"インサートモードで移動
 inoremap <silent> <expr> <C-p> "<C-r>=ExecExCommand('normal k')<CR>"
 inoremap <silent> <expr> <C-n> "<C-r>=ExecExCommand('normal j')<CR>"
-" 補完せず補完ウィンドウを閉じてから移動
-inoremap <silent> <expr> <C-b> pumvisible() ? "<C-e><C-r>=ExecExCommand('normal b')<CR>" : "<C-r>=ExecExCommand('normal b')<CR>"
-inoremap <silent> <expr> <C-f> pumvisible() ? "<C-e><C-r>=ExecExCommand('normal w')<CR>" : "<C-r>=ExecExCommand('normal w')<CR>"
+inoremap <silent> <expr> <C-f> "<C-r>=ExecExCommand('normal l')<CR>"
+inoremap <silent> <expr> <C-b> "<C-r>=ExecExCommand('normal h')<CR>"
 " 保存
 inoremap <silent> <expr> <C-l> "<C-r>=ExecExCommand('update')<CR>"
 
@@ -61,7 +76,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Plugin
-Plugin 'ctrlp.vim'
 Plugin 'prabirshrestha/async.vim'
 Plugin 'prabirshrestha/asyncomplete.vim'
 Plugin 'prabirshrestha/asyncomplete-lsp.vim'
@@ -69,35 +83,55 @@ Plugin 'prabirshrestha/vim-lsp'
 Plugin 'mattn/vim-lsp-settings'
 Plugin 'mattn/vim-goimports'
 Plugin 'mattn/vim-lsp-icons'
+Plugin 'mattn/emmet-vim'
 Plugin 'preservim/nerdtree'
 Plugin 'cohama/lexima.vim'
+Plugin 'simeji/winresizer'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'vim-airline/vim-airline'
 
 call vundle#end()
 filetype plugin indent on
 
+" Leaderキー
+let mapleader = ","
+" dotfile表示
+let NERDTreeShowHidden=1
 " Go
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_build_constraints = 1
 let g:go_version_warning = 0
 let g:netrw_altv=1
 
 autocmd FileType go :highlight goErr cterm=bold ctermfg=214
 autocmd FileType go :match goErr /\<err\>/
-autocmd BufWritePre <buffer> LspDocumentFormatSync
 
 " LSP
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
 let g:asyncomplete_popup_delay = 200
 let g:lsp_text_edit_enabled = 0
+let g:lsp_highlight_references_enabled = 1
 
-nmap <silent> gd :LspDefinition<CR>
-nmap <silent> <f2> :LspRename<CR>
-nmap <silent> <Leader>d :LspTypeDefinition<CR>
-nmap <silent> <Leader>r :LspReferences<CR>
-nmap <silent> <Leader>i :LspImplementation<CR>
-
+nnoremap <silent> <f2> :LspRename<CR>
+nnoremap <silent> <Leader>d :LspPeekDefinition<CR>
+nnoremap <silent> <Leader>r :LspReferences<CR>
+nnoremap <silent> <Leader>i :LspPeekImplementation<CR>
+nnoremap <silent> <Leader>b :NERDTreeFind<CR>
 nnoremap <silent> <C-]> :LspDefinition<CR>
-nnoremap <silent> <C-e> :NERDTreeToggle<CR>
+nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <C-f> :Ag<CR>
+nnoremap <silent> <C-g> :GFiles?<CR>
+nnoremap <silent> <C-h> :History:<CR>
+
+" Ag検索でファイル名を除外
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
