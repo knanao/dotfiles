@@ -17,3 +17,8 @@ end)
 hs.hotkey.bind({"option"}, "Z", function()
    hs.application.launchOrFocus("zoom.us")
 end)
+
+hs.hotkey.bind({"option"}, "V", function()
+   hs.application.launchOrFocus("Visual Studio Code")
+end)
+
