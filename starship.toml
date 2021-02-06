@@ -1,0 +1,20 @@
+# 改行をなくす
+add_newline = false
+
+[git_status]
+disabled = true
+
+[git_branch]
+symbol = " "
+
+[time]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[golang]
+symbol = " "
+
+[docker]
+symbol = " "

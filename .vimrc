@@ -92,6 +92,7 @@ Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
+Plugin 'easymotion/vim-easymotion'
 
 call vundle#end()
 filetype plugin indent on
@@ -123,7 +124,7 @@ let g:lsp_highlight_references_enabled = 1
 nnoremap <silent> <f2> :LspRename<CR>
 nnoremap <silent> <Leader>d :LspPeekDefinition<CR>
 nnoremap <silent> <Leader>r :LspReferences<CR>
-nnoremap <silent> <Leader>i :LspPeekImplementation<CR>
+nnoremap <silent> <Leader>t :LspHover<CR>
 nnoremap <silent> <Leader>b :NERDTreeFind<CR>
 nnoremap <silent> <C-]> :LspDefinition<CR>
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
@@ -134,4 +135,3 @@ nnoremap <silent> <C-h> :History:<CR>
 
 " Ag検索でファイル名を除外
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
-
