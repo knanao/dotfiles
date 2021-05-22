@@ -15,6 +15,3 @@ disabled = true
 
 [golang]
 symbol = " "
-
-[docker]
-symbol = " "

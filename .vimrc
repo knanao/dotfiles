@@ -93,6 +93,10 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'google/vim-maktaba'
+Plugin 'google/vim-codefmt'
+Plugin 'google/vim-glaive'
+Plugin 'hashivim/vim-terraform' , { 'for': 'terraform'}
 
 call vundle#end()
 filetype plugin indent on
@@ -110,9 +114,6 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_version_warning = 0
 let g:netrw_altv=1
-
-autocmd FileType go :highlight goErr cterm=bold ctermfg=214
-autocmd FileType go :match goErr /\<err\>/
 
 " LSP
 let g:lsp_diagnostics_enabled = 1
@@ -135,3 +136,28 @@ nnoremap <silent> <C-h> :History:<CR>
 
 " Ag検索でファイル名を除外
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
+" Format
+augroup autoformat_settings
+  autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
+  autocmd FileType go :highlight goErr cterm=bold ctermfg=214
+  autocmd FileType go :match goErr /\<err\>/
+  autocmd FileType python AutoFormatBuffer yapf
+augroup END
+
+" Terraform
+let g:terraform_fmt_on_save=1
+if executable('terraform-lsp')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'terraform-lsp',
+    \ 'cmd': {server_info->['terraform-lsp']},
+    \ 'whitelist': ['terraform','tf'],
+    \ })
+endif
+
+" " Debugging
+" let g:lsp_log_verbose = 1
+" let g:lsp_log_file = expand('~/vim-lsp.log')
+" 
+" " for asyncomplete.vim log
+" let g:asyncomplete_log_file = expand('~/asyncomplete.log')
