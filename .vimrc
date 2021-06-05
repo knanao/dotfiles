@@ -128,6 +128,7 @@ nnoremap <silent> <Leader>r :LspReferences<CR>
 nnoremap <silent> <Leader>t :LspHover<CR>
 nnoremap <silent> <Leader>b :NERDTreeFind<CR>
 nnoremap <silent> <C-]> :LspDefinition<CR>
+nnoremap <silent> <C-i> :LspCallHierarchyIncoming<CR>
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <C-f> :Ag<CR>
