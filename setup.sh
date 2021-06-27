@@ -1,6 +1,6 @@
  #!/bin/bash
 
- DOT_FILES=(.vim .bash_profile .bashrc)
+ DOT_FILES=(.vim .bash_profile .bashrc .hammerspoon)
 
  for file in ${DOT_FILES[@]}
  do
