@@ -97,14 +97,17 @@ Plugin 'google/vim-maktaba'
 Plugin 'google/vim-codefmt'
 Plugin 'google/vim-glaive'
 Plugin 'hashivim/vim-terraform' , { 'for': 'terraform'}
+Plugin 'prettier/vim-prettier', { 'for': ['javascript', 'typescript', 'css', 'scss', 'html']}
 
 call vundle#end()
 filetype plugin indent on
 
 " Leaderキー
 let mapleader = ","
+
 " dotfile表示
 let NERDTreeShowHidden=1
+
 " Go
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
@@ -114,6 +117,13 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_version_warning = 0
 let g:netrw_altv=1
+
+" Prettier
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
+let g:prettier#autoformat_config_present = 1
+let g:prettier#autoformat_config_files = ['.prettierrc.json', '.prettierrc']
+let g:prettier#config#config_precedence = 'prefer-file'
 
 " LSP
 let g:lsp_diagnostics_enabled = 1
@@ -140,7 +150,7 @@ command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : 
 
 " Format
 augroup autoformat_settings
-  autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
+  autocmd FileType c,cpp,proto,arduino AutoFormatBuffer clang-format
   autocmd FileType go :highlight goErr cterm=bold ctermfg=214
   autocmd FileType go :match goErr /\<err\>/
   autocmd FileType python AutoFormatBuffer yapf

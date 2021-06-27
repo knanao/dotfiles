@@ -22,3 +22,6 @@ hs.hotkey.bind({"option"}, "V", function()
    hs.application.launchOrFocus("Visual Studio Code")
 end)
 
+hs.hotkey.bind({"option"}, "M", function()
+   hs.application.launchOrFocus("Simulator")
+end)
