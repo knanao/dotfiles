@@ -17,8 +17,10 @@ stty start undef
 
 # bash-complete
 [ -f $(brew --prefix)/etc/bash_completion ] && . $(brew --prefix)/etc/bash_completion
-complete -C /usr/local/Cellar/tfenv/2.0.0/versions/0.12.24/terraform terraform
 source ~/.git-completion.bash
+if type terraform &> /dev/null; then
+    complete -C terraform terraform
+fi
 
 # gcloud
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'
