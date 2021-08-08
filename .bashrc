@@ -10,6 +10,8 @@ export PATH=/usr/local/Cellar/vim/8.2.1150/bin:$PATH
 export PS1="\u \W\$ "
 export ICEBERG="bg+:#1e2132,bg:#161821,spinner:#84a0c6,hl:#6b7089,fg:#c6c8d1,header:#6b7089,info:#b4be82,pointer:#84a0c6,marker:#84a0c6,fg+:#c6c8d1,prompt:#84a0c6,hl+:#84a0c6"
 export BASH_SILENCE_DEPRECATION_WARNING=1
+export GOPRIVATE=github.com/simply-app/sdk-go
+export PATH="$HOME/.pyenv/shims:$PATH"
 
 # disable output lock
 stty stop undef
@@ -47,3 +49,6 @@ bind -x '"\C-h": hl'
 
 # alias 
 alias ls='ls -G'
+
+# pyenv
+eval "$(pyenv init -)"
