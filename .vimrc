@@ -108,10 +108,10 @@ filetype plugin indent on
 let mapleader = ","
 
 " display dotfile.
-let NERDTreeShowHidden=1
+let NERDTreeShowHidden = 1
 
 " split on the right
-let g:netrw_altv=1
+let g:netrw_altv = 1
 
 " Go
 let g:go_highlight_functions = 1
@@ -124,6 +124,9 @@ let g:go_version_warning = 0
 
 " Rust
 let g:rustfmt_autosave = 1
+
+" Terraform
+let g:terraform_fmt_on_save = 1
 
 " Prettier
 let g:prettier#autoformat = 1
@@ -162,16 +165,6 @@ augroup autoformat_settings
   autocmd FileType go :match goErr /\<err\>/
   autocmd FileType python AutoFormatBuffer yapf
 augroup END
-
-" Terraform
-let g:terraform_fmt_on_save=1
-if executable('terraform-lsp')
-  au User lsp_setup call lsp#register_server({
-    \ 'name': 'terraform-lsp',
-    \ 'cmd': {server_info->['terraform-lsp']},
-    \ 'whitelist': ['terraform','tf'],
-    \ })
-endif
 
 " Debugging
 " let g:lsp_log_verbose = 1
