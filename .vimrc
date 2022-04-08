@@ -1,70 +1,70 @@
-" 行番号を表示
+" display line number.
 set number
-" 検索結果ハイライト
+" highlight serch result.
 set hlsearch
-" 大文字小文字の区別をしない
+" not case sensitive.
 set ignorecase
-" インクリメンタルサーチ
+" incremental search.
 set incsearch
-" ステータス表示
+" display status.
 set laststatus=2
-" カーソル行表示
+" display cursor line.
 set cursorline
-" カーソル列表示
+" display cursor column.
 set cursorcolumn
-" ヤンクしたデータをクリップボードで使用
+" use yanked data on the clipboard.
 set clipboard+=unnamed
-" オートインデント
+" auto indent.
 set smartindent
-" コマンドライン補完
+" command line completion.
 set wildmenu
-" オートコンプリート
+" auto completion.
 set completeopt=menuone,noinsert
-" 不可視文字可視化
+" invisible character visualization.
 set list
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
-" コントロールコード
+" control code.
 set backspace=indent,eol,start
-" modifiableオン
+" modifiable on.
 set ma
-" swap fileを作成しない
+" no swap file.
 set noswapfile
-" vimgrep除外ファイル
+" ignore file with vimgrep.
 set wildignore+=node_modules/**,bin/**
-" 更新時間
+" update time.
 set updatetime=100
 
-" Escを2回押すとハイライトを消す
+" press Esc twice to turn off the highlights.
 nnoremap <Esc><Esc> :nohlsearch<CR>
-" INSERTから抜ける
+" escape INSERT mode.
 inoremap <silent> jj <ESC>
-" カラースキーム
+" color scheme.
 colorscheme iceberg
-" シンタックスオン
+" syntax on.
 syntax on
-" 補完表示時のEnterで改行をしない
+" do not start a new line with Enter when displaying completion.
 inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
-" 選択上移動
+" move up.
 inoremap <expr><C-n> pumvisible() ? "<Down>" : "<C-n>"
-" 選択下移動
+" move down.
 inoremap <expr><C-p> pumvisible() ? "<Up>" : "<C-p>""
-" 行頭へ移動
+" move top.
 cnoremap <C-a> <Home>
 inoremap <C-a> <Home>
-" 行末へ移動
+" move end.
 cnoremap <C-e> <End>
 inoremap <C-e> <End>
-" Exコマンドを実装する関数を定義
+" define a function that implements the exec command.
 function! ExecExCommand(cmd)
   silent exec a:cmd
   return ''
 endfunction
-"インサートモードで移動
+" move in insert mode.
 inoremap <silent> <expr> <C-p> "<C-r>=ExecExCommand('normal k')<CR>"
 inoremap <silent> <expr> <C-n> "<C-r>=ExecExCommand('normal j')<CR>"
 inoremap <silent> <expr> <C-f> "<C-r>=ExecExCommand('normal l')<CR>"
 inoremap <silent> <expr> <C-b> "<C-r>=ExecExCommand('normal h')<CR>"
-" 保存
+" update.
 inoremap <silent> <expr> <C-l> "<C-r>=ExecExCommand('update')<CR>"
 
 " Vundle
@@ -98,15 +98,20 @@ Plugin 'google/vim-codefmt'
 Plugin 'google/vim-glaive'
 Plugin 'hashivim/vim-terraform' , { 'for': 'terraform'}
 Plugin 'prettier/vim-prettier', { 'for': ['javascript', 'typescript', 'css', 'scss', 'html']}
+Plugin 'knanao/godoc'
+Plugin 'rust-lang/rust.vim'
 
 call vundle#end()
 filetype plugin indent on
 
-" Leaderキー
+" leader key.
 let mapleader = ","
 
-" dotfile表示
+" display dotfile.
 let NERDTreeShowHidden=1
+
+" split on the right
+let g:netrw_altv=1
 
 " Go
 let g:go_highlight_functions = 1
@@ -116,7 +121,9 @@ let g:go_highlight_operators = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_version_warning = 0
-let g:netrw_altv=1
+
+" Rust
+let g:rustfmt_autosave = 1
 
 " Prettier
 let g:prettier#autoformat = 1
@@ -145,12 +152,12 @@ nnoremap <silent> <C-f> :Ag<CR>
 nnoremap <silent> <C-g> :GFiles?<CR>
 nnoremap <silent> <C-h> :History:<CR>
 
-" Ag検索でファイル名を除外
+" ignore the file with Ag search.
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 " Format
 augroup autoformat_settings
-  autocmd FileType c,cpp,proto,arduino AutoFormatBuffer clang-format
+  " autocmd FileType c,cpp,proto,arduino AutoFormatBuffer clang-format
   autocmd FileType go :highlight goErr cterm=bold ctermfg=214
   autocmd FileType go :match goErr /\<err\>/
   autocmd FileType python AutoFormatBuffer yapf
@@ -166,9 +173,9 @@ if executable('terraform-lsp')
     \ })
 endif
 
-" " Debugging
+" Debugging
 " let g:lsp_log_verbose = 1
 " let g:lsp_log_file = expand('~/vim-lsp.log')
 " 
-" " for asyncomplete.vim log
+" for asyncomplete.vim log
 " let g:asyncomplete_log_file = expand('~/asyncomplete.log')
