@@ -13,13 +13,14 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 export GOPRIVATE=github.com/simply-app/sdk-go
 export PATH="$PATH:$HOME/.pyenv/shims"
 export PATH="$PATH:$HOME/.cargo/env"
+export PATH="$PATH:$HOME/.cargo/bin"
 
 # disable output lock
 stty stop undef
 stty start undef
 
 # bash-complete
-[ -f $(brew --prefix)/etc/bash_completion ] && . $(brew --prefix)/etc/bash_completion
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 source ~/.git-completion.bash
 if type terraform &> /dev/null; then
     complete -C terraform terraform

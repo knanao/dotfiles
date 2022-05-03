@@ -3,7 +3,7 @@ hs.hotkey.bind({"option"}, "S", function()
 end)
 
 hs.hotkey.bind({"option"}, "P", function()
-   hs.application.launchOrFocus("Postman")
+   hs.application.launchOrFocus("Podcasts")
 end)
 
 hs.hotkey.bind({"option"}, "I", function()
@@ -16,12 +16,4 @@ end)
 
 hs.hotkey.bind({"option"}, "Z", function()
    hs.application.launchOrFocus("zoom.us")
-end)
-
-hs.hotkey.bind({"option"}, "V", function()
-   hs.application.launchOrFocus("Visual Studio Code")
-end)
-
-hs.hotkey.bind({"option"}, "M", function()
-   hs.application.launchOrFocus("Simulator")
 end)

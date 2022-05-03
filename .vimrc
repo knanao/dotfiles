@@ -73,6 +73,10 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" Terminal model
+" set termwinkey=<C-a>
+" nnoremap <C-t> :tab ter<CR>
+
 Plugin 'VundleVim/Vundle.vim'
 
 " Plugin
