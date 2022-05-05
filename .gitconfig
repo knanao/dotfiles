@@ -1,0 +1,8 @@
+[user]
+	name = knanao
+	email = nao.7ken@gmail.com
+[ghq]
+	root = ~/go/src/github.com
+	root = ~/rust
+[url "git@github.com:"]
+	insteadOf = https://github.com
