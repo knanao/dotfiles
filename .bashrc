@@ -14,6 +14,7 @@ export GOPRIVATE=github.com/simply-app/sdk-go
 export PATH="$PATH:$HOME/.pyenv/shims"
 export PATH="$PATH:$HOME/.cargo/env"
 export PATH="$PATH:$HOME/.cargo/bin"
+export HISTCONTROL=ignoredups 
 
 # disable output lock
 stty stop undef
@@ -44,7 +45,7 @@ function gcd() {
 }
 
 # history
-alias hl='temp=$(cat ~/.bash_history | peco); { echo "$temp" | pbcopy ; }'
+alias hl='history -a; temp=$(cat ~/.bash_history | peco); { echo "$temp" | pbcopy ; }'
 
 # bind
 bind -x '"\C-g": gcd'
