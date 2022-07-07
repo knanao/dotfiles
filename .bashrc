@@ -40,7 +40,7 @@ export FZF_DEFAULT_COMMAND="fd --exclude={.git,node_modules,bazel-*,vendor} --ty
 
 # gcd
 function gcd() {
-  local repo_path=`ghq list --full-path | fzf --reverse --preview "bat --style=header,grid --line-range :100 {1}/README.md"`
+  local repo_path=`ghq list --full-path | fzf --reverse --preview "bat --color=always --style=header,grid --line-range :100 {1}/README.md"`
   \cd ${repo_path}
 }
 

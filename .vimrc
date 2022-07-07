@@ -160,7 +160,14 @@ nnoremap <silent> <C-g> :GFiles?<CR>
 nnoremap <silent> <C-h> :History:<CR>
 
 " ignore the file with Ag search.
-command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+let s:ag_options = '--hidden --ignore-dir={.git,node_modules,bazel-*,vendor}'
+command! -bang -nargs=* Ag
+\ call fzf#vim#ag(
+\   <q-args>,
+\   s:ag_options,
+\   {'options': '--delimiter : --nth 4..'},
+\   <bang>0
+\ )
 
 " Format
 augroup autoformat_settings
