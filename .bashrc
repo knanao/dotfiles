@@ -15,6 +15,7 @@ export PATH="$PATH:$HOME/.pyenv/shims"
 export PATH="$PATH:$HOME/.cargo/env"
 export PATH="$PATH:$HOME/.cargo/bin"
 export HISTCONTROL=ignoredups 
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 # disable output lock
 stty stop undef
