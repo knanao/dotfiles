@@ -7,6 +7,7 @@ export GOPROXY=direct
 export FIREBASE_CREDENTIALS=~/path_to_file/firebase_adminsdk_service_account_test.json
 export PATH=$PATH:/Users/s08721/.nodebrew/current/bin
 export PATH=$PATH:/usr/local/Cellar/vim/8.2.1150/bin
+export PATH="$(brew --prefix)/bin/:$PATH"
 export PS1="\u \W\$ "
 export ICEBERG="bg+:#1e2132,bg:#161821,spinner:#84a0c6,hl:#6b7089,fg:#c6c8d1,header:#6b7089,info:#b4be82,pointer:#84a0c6,marker:#84a0c6,fg+:#c6c8d1,prompt:#84a0c6,hl+:#84a0c6"
 export BASH_SILENCE_DEPRECATION_WARNING=1
