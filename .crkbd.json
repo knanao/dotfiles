@@ -40,7 +40,7 @@
       "KC_K",
       "KC_J",
       "KC_H",
-      "KC_ENT",
+      "KC_RGUI",
       "KC_SLSH",
       "KC_DOT",
       "KC_COMM",
@@ -90,7 +90,7 @@
       "KC_UP",
       "KC_DOWN",
       "KC_LEFT",
-      "KC_NO",
+      "KC_RGUI",
       "KC_NO",
       "KC_NO",
       "KC_NO",
@@ -100,7 +100,7 @@
       "KC_NO",
       "KC_NO",
       "KC_RALT",
-      "KC_RGUI",
+      "KC_TRNS",
       "KC_ENT"
     ],
     [
