@@ -12,3 +12,10 @@ $ brew install git
 ```
 
 3. Clone this repository and Run `make setup`
+
+4. Set gitconfig
+```
+user.email=nao.7ken@gmail.com
+user.name=knanao
+ghq.root=~/go/src/github.com
+```

@@ -1,6 +1,12 @@
 # homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+# starship
+eval "$(starship init bash)"
+
+# pyenv
+eval "$(pyenv init -)"
+
 # env
 export GOPATH="$HOME/go"
 export PATH=$PATH:$(go env GOPATH)/bin
@@ -37,9 +43,6 @@ fi
 source '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'
 source '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc'
 
-# starship
-eval "$(starship init bash)"
-
 # fzf
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color=$ICEBERG"
 export FZF_DEFAULT_COMMAND="fd --exclude={.git,node_modules,bazel-*,vendor} --type f"
@@ -59,6 +62,3 @@ bind -x '"\C-h": hl'
 
 # alias 
 alias ls='ls -G'
-
-# pyenv
-eval "$(pyenv init -)"
