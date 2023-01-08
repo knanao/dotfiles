@@ -1,3 +1,12 @@
+# homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# starship
+eval "$(starship init bash)"
+
+# pyenv
+eval "$(pyenv init -)"
+
 # env
 export GOPATH="$HOME/go"
 export PATH=$PATH:$(go env GOPATH)/bin
@@ -17,6 +26,7 @@ export PATH="$PATH:$HOME/.cargo/env"
 export PATH="$PATH:$HOME/.cargo/bin"
 export HISTCONTROL=ignoredups 
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+export STARSHIP_CONFIG=$HOME/starship.toml
 
 # disable output lock
 stty stop undef
@@ -30,11 +40,8 @@ if type terraform &> /dev/null; then
 fi
 
 # gcloud
-source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'
-source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc'
-
-# starship
-eval "$(starship init bash)"
+source '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'
+source '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc'
 
 # fzf
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color=$ICEBERG"
@@ -55,6 +62,3 @@ bind -x '"\C-h": hl'
 
 # alias 
 alias ls='ls -G'
-
-# pyenv
-eval "$(pyenv init -)"
