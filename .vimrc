@@ -160,7 +160,7 @@ nnoremap <silent> <C-g> :GFiles?<CR>
 nnoremap <silent> <C-h> :History:<CR>
 
 " ignore the file with Ag search.
-let s:ag_options = '--hidden --ignore-dir={.git,node_modules,bazel-*,vendor}'
+let s:ag_options = '--hidden --ignore-dir={.git,node_modules,bazel-*,vendor} --color-path="0;34" --color-line-number="0"'
 command! -bang -nargs=* Ag
 \ call fzf#vim#ag(
 \   <q-args>,
