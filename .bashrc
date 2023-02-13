@@ -23,10 +23,18 @@ stty stop undef
 stty start undef
 
 # bash-complete
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
-source ~/.git-completion.bash
+[ -f /opt/homebrew/etc/bash_completion ] && . /opt/homebrew/etc/bash_completion
 if type terraform &> /dev/null; then
     complete -C terraform terraform
+fi
+if [ -f ~/.git-completion.sh ]; then
+    source ~/.git-completion.sh
+fi
+if [ $commands[kubectl] ]; then
+  source <(kubectl completion bash)
+fi
+if [ $commands[helm] ]; then
+   source <(helm completion bash)
 fi
 
 # gcloud
