@@ -1,11 +1,8 @@
 [user]
-	name = knanao
-	email = nao.7ken@gmail.com
+  name = knanao
+  email = knanao.dev@gmail.com
 [ghq]
-	root = ~/go/src/github.com
-	root = ~/rust
+  root = ~/go/src/github.com
+  root = ~/rust
 [url "git@github.com:"]
-	insteadOf = https://github.com
-[safe]
-	directory = /github/workspace
-	directory = /Users/s08721/go/src/github.com/pipe-cd/pipecd
+  insteadOf = https://github.com

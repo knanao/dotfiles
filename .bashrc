@@ -14,7 +14,6 @@ export GOROOT="$HOME/.go"
 export GO111MODULE=on
 export GOPROXY=direct
 export FIREBASE_CREDENTIALS=~/path_to_file/firebase_adminsdk_service_account_test.json
-export PATH=$PATH:/Users/s08721/.nodebrew/current/bin
 export PATH=$PATH:/usr/local/Cellar/vim/8.2.1150/bin
 export PATH="$(brew --prefix)/bin/:$PATH"
 export PS1="\u \W\$ "
