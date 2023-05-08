@@ -8,15 +8,14 @@ DOT_FILES=(.bash_profile .bashrc .crkbd.json .tmux.conf .vimrc .git-completion.b
 
 for file in ${DOT_FILES[@]}
 do
-  if [[ -d $file  ]]; then
-    ln -sd $PWD/$file $HOME/$file
-  elif [[ -f $file ]]; then
-    ln -sf $PWD/$file $HOME/$file
-  fi
+  ln -sf $PWD/$file $HOME/$file
 done
 
-# brew bundle
-# 
-# git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-# 
-# curl -O https://raw.githubusercontent.com/Arc0re/Iceberg-iTerm2/master/iceberg.itermcolors
+ls -s .hammerspoon $HOME/.hammerspoon
+ls -s bin $HOME/bin
+
+brew bundle
+
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+curl -o $HOME -O https://raw.githubusercontent.com/Arc0re/Iceberg-iTerm2/master/iceberg.itermcolors
