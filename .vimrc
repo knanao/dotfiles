@@ -67,6 +67,9 @@ inoremap <silent> <expr> <C-b> "<C-r>=ExecExCommand('normal h')<CR>"
 " update.
 inoremap <silent> <expr> <C-l> "<C-r>=ExecExCommand('update')<CR>"
 
+# autocomplete-enter
+inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
+
 " Vundle
 set nocompatible
 filetype off
